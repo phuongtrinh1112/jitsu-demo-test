@@ -3,7 +3,7 @@ import {
     GITHUB_GET_REPOS_BY_ORG_URI,
     GITHUB_API_VERSION,
     GITHUB_ACCEPT_HEADER,
-} from '../variables/api_vars';
+} from '../data/variables/api_vars';
 
 export class GithubApi {
     readonly getReposByOrgUrl: string = GITHUB_URL + GITHUB_GET_REPOS_BY_ORG_URI;

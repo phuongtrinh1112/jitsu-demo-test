@@ -1,6 +1,6 @@
 import { Page } from '@playwright/test';
 import { expect } from '@playwright/test';
-import { WEB_LINK } from '../constants/web-link';
+import { WEB_LINK } from '../data/constants/web-link';
 import { getCurrentDate, calculateTimeToANumber } from '../utils/DateCalculation';
 
 export class TimeIsPage {
