@@ -19,9 +19,22 @@ jitsu-demo-ui-test/
 ├── package.json                        # Dependencies & npm scripts
 └── .env.example                        # SSL environment config reference
 ```
+## How to set up project on local machine
+### Prequesite
+- Install visual studio code IDE
+- Install node.js
+- Clone this repo to local
+### Setting up
+- Install playwright by open visual studio code then execute command: `npm init playwright@latest`
+### Run test
+- Follow below segment [How to run test locally](URL "https://github.com/phuongtrinh1112/jitsu-demo-test/blob/master/README.md#how-to-run-test-locally")
+### Open report
+- Execute command in terminal of visual studio code then execute command: `npx playwright show-report`
+
 ## How to run test locally
-### To run single test
 - Open terminal in visual studio code editor and execute below command
+### To run single test
+- To run 1 specific test case
 #### Run test by test case name
 ```
 npx playwright test -g "<test_case_name>" --project=<selected_browser>
@@ -41,7 +54,32 @@ Example:
   npx playwright test --grep "@seleniumHQ" --project=chromium
   ```
 ### To run multiple tests
-
+- To run a list of expected test cases or test cases of a specific test plan
+#### Run test by test case tag
+```
+npx playwright test --grep "<shared_tag>" --project=<selected_browser>
+```
+Example:
+  - Run UI test cases with tag: ui. All test cases that has tag @ui will be executed
+  ```
+  npx playwright test --grep "@ui" --project=chromium
+  ```
+  - Run 2 specific UI test cases with different tag
+  ```
+  npx playwright test --grep "@hanoi or @nhaTrang" --project=chromium
+  ```
+#### Run test by test file name
+- To run test cases belong to a test plan
+```
+npx playwright test <test_file_name> --project=<selected_browser>
+```
+Example:
+  - Run API test cases in github_check.spec.ts file
+  ```
+  npx playwright test github_check.spec.ts --project=chromium
+  ```
 ### To run all tests
-
-## How to set up project
+- To run all test cases in this project
+```
+npx playwright test
+```
