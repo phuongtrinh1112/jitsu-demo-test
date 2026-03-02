@@ -51,7 +51,7 @@ npx playwright test --grep "<tag>" --project=<selected_browser>
 Example:
   - Run API test case with tag: @seleniumHQ
   ```
-  npx playwright test --grep "@seleniumHQ" --project=chromium
+  npx playwright test --grep "@seleniumHQ" --project=api
   ```
 ### To run multiple tests
 - To run a list of expected test cases or test cases of a specific test plan
@@ -66,7 +66,7 @@ Example:
   ```
   - Run 2 specific UI test cases with different tag
   ```
-  npx playwright test --grep "@hanoi or @nhaTrang" --project=chromium
+  npx playwright test --grep "@hanoi | @nhaTrang" --project=chromium
   ```
 #### Run test by test file name
 - To run test cases belong to a test plan

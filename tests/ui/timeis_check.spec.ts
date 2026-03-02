@@ -13,14 +13,16 @@ async function timeIsCheck(page: Page, cityName: string, duration: number) {
     await timeIsPage.verifyCurrentTimeRunning(duration);
 }
 
-test('access timing ui - Hanoi', {
-  tag: ['@ui', '@timing', '@happyFlow', '@hanoi'],
-}, async ({ page }) => {
-  await timeIsCheck(page, 'Hanoi', 5);
-});
+test.describe.serial('timeis checks', () => {
+  test('access timing ui - Hanoi', {
+    tag: ['@ui', '@timing', '@happyFlow', '@hanoi'],
+  }, async ({ page }) => {
+    await timeIsCheck(page, 'Hanoi', 5);
+  });
 
-test('access timing ui - Nha Trang', {
-  tag: ['@ui', '@timing', '@happyFlow', '@nhaTrang'],
-}, async ({ page }) => {
+  test('access timing ui - Nha Trang', {
+    tag: ['@ui', '@timing', '@happyFlow', '@nhaTrang'],
+  }, async ({ page }) => {
     await timeIsCheck(page, 'Nha Trang', 3);
+  });
 });

@@ -66,19 +66,22 @@ export class TimeIsPage {
     async verifyCurrentTimeRunning(second : number): Promise<void> {
         await this.page.locator(this.currentTimeLocator).waitFor({ state: 'visible', timeout: 10000 });
         const timeLocator = this.page.locator(this.currentTimeLocator);
-        const time1 = await timeLocator.textContent();
-        console.log('Time 1: ', time1);
-        const time1InSeconds = calculateTimeToANumber(time1!);
+        const time1 = (await timeLocator.textContent())?.trim() ?? '';
+        //check if time is in correct format HH:MM:SS
+        expect(time1, 'Time is in HH:MM:SS format').toMatch(/^\d{1,2}:\d{2}:\d{2}$/);
+        console.log('Time is in correct format HH:MMS:SS ', time1);
+
+        const time1InSeconds = calculateTimeToANumber(time1);
         console.log('Time 1 in seconds: ', time1InSeconds);
         //wait for a few seconds then get the time again
         await this.page.waitForTimeout(second * 1000);
 
         const time2 = await timeLocator.textContent();
-        console.log('Time 2: ', time2);
         const time2InSeconds = calculateTimeToANumber(time2!);
         console.log('Time 2 in seconds: ', time2InSeconds);
 
         //expect time2 to be greater than time1, which means the time is running and progressing forward
         expect(time2InSeconds).toBeGreaterThan(time1InSeconds);
+        console.log('Current time is running and progressing forward');
   }
 }

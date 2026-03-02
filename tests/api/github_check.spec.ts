@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { GithubApi } from '../../api/github_api';
 
-test.describe('@api', () => {
+test.describe.serial('@api', () => {
     async function checkGithubApiWithOrgName(orgName: string) {
         const githubApi = new GithubApi();
         await githubApi.sendGetReposByOrg(orgName);
